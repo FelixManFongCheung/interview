@@ -3,11 +3,6 @@ import React from "react";
 function Item({ products }) {
   return (
     <div>
-      <img
-        className="sub-image"
-        src={require("../assets/mobile/mobileVer1.png").default}
-        alt="packet"
-      />
       <div className="product-name">{products.productName.toUpperCase()}</div>
       <div className="product-type">Type: {products.productType}</div>
       <ul className="tags">
