@@ -2,6 +2,11 @@
   margin: 10px 0;
 }
 
+@function absoluteValue($vw, $ratio) {
+  $vh: 100 - $vw/$ratio;
+  @return $vh;
+}
+
 @mixin button {
   border: none;
   padding: 15px 40px;
@@ -10,89 +15,175 @@
 }
 
 .item-description {
-  margin: 20px;
+  width: 100%;
   font-size: 18px;
-  .product-name {
-    font-weight: bold;
-    @include margin;
-  }
-  .product-type {
-    @include margin;
-    display: inline-block;
-    font-size: 14px;
-  }
-  .tags {
-    list-style-type: none;
-    @include margin;
-    li {
-      display: inline-block;
-      font-size: 13px;
-      margin: 5px 0;
-      margin-right: 10px;
-      padding: 3px 30px;
-      border-radius: 20px;
-      border: 2px solid;
-      border-color: black;
+  // padding: 20px;
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  .section-1 {
+    position: relative;
+    .fish-oil {
+      display: none;
+    }
+    .content {
+      padding: 20px;
+      .product-name {
+        font-family: "Merriweather", serif;
+        @include margin;
+      }
+      .product-type-container {
+        // @include margin;
+        display: inline-block;
+        font-size: 14px;
+        .product-type {
+          color: #005128;
+          font-weight: bold;
+        }
+      }
+      .tags {
+        list-style-type: none;
+        @include margin;
+        width: 100%;
+        li {
+          display: inline-block;
+          font-size: 13px;
+          margin: 5px 0;
+          margin-right: 10px;
+          padding: 7px 30px;
+          border-radius: 20px;
+          border: 2px solid;
+          border-color: black;
+          color: #005128;
+          font-weight: bold;
+        }
+      }
+      .product-information {
+        @include margin;
+        font-family: "Merriweather", serif;
+        font-weight: bold;
+        font-size: 16px;
+      }
+      .product-description {
+        @include margin;
+        font-size: 13px;
+        line-height: 159.1%;
+      }
+      .price {
+        @include margin;
+        font-size: 32px;
+        font-weight: bold;
+      }
+      .button-container {
+        width: 100%;
+        .do-the-test {
+          display: inline;
+          background-color: #de803d;
+          color: white;
+          @include button;
+          margin-right: 5px;
+          font-size: 13px;
+        }
+        .do-the-test:hover {
+          cursor: pointer;
+        }
+        .add-to-cart {
+          display: inline;
+          background-color: #bfe5c2;
+          @include button;
+          margin-left: 5px;
+          font-size: 13px;
+        }
+        .add-to-cart:hover {
+          cursor: pointer;
+        }
+      }
     }
   }
-  .product-information {
-    @include margin;
-    font-weight: bold;
-    font-size: 16px;
-  }
-  .product-description {
-    @include margin;
-    font-size: 13px;
-  }
-  .price {
-    @include margin;
-    font-size: 32px;
-    font-weight: 900;
-  }
-  .button-container {
-    width: 100%;
-    display: inline-block;
-    .do-the-test {
-      background-color: #de803d;
-      color: white;
-      @include button;
-      margin-right: 5px;
-    }
-    // .do-the-test:hover {
-    //   background-color: #bfe5c2;
-    // }
-    .add-to-cart {
-      background-color: #bfe5c2;
-      @include button;
-      margin-left: 5px;
-    }
-    // .add-to-cart:hover {
-    //   background-color: #de803d;
-    // }
-  }
-  .badges {
-    margin-top: 40px;
+
+  .section-2 {
+    position: relative;
+    // margin-top: 40px;
     list-style-type: none;
     white-space: nowrap;
     overflow-x: scroll;
     overflow-y: hidden;
+    padding: 20px;
     li {
       text-align: center;
       display: inline-block;
       max-width: 150px;
+      width: 140px;
       border: 1px solid;
       border-radius: 5px;
       margin-right: 10px;
       padding: 20px 8px;
       .title-name {
+        margin-top: 5px;
         color: #005128;
+        font-size: 16px;
       }
       p {
         width: 100%;
+        font-size: 13px;
         text-align: left;
         word-wrap: break-word;
         white-space: normal;
+        color: #777777;
+        line-height: 160%;
       }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .item-description {
+    .section-1 {
+      .fish-oil {
+        position: relative;
+        // margin: -50px;
+        display: block;
+        width: 100vw;
+        aspect-ratio: 1440/790;
+      }
+      .content {
+        position: absolute;
+        width: 50%;
+        padding: 50px;
+        min-width: 612px;
+        // bottom: absoluteValue(100, 1440/790) * 1vh;
+        bottom: 0;
+        .product-name {
+          font-size: 32px;
+        }
+        .product-type-container {
+          font-size: 16px;
+        }
+        .tags {
+          li {
+            padding: 5px 10px;
+          }
+        }
+        .product-information {
+          font-size: 14px;
+        }
+        .button-container {
+          margin-top: 20px;
+          .do-the-test {
+            font-size: 16px;
+            width: 250px;
+            padding: 12px 40px;
+          }
+          .add-to-cart {
+            font-size: 16px;
+            width: 250px;
+            padding: 12px 40px;
+          }
+        }
+      }
+    }
+
+    .section-2 {
+      padding: 50px;
     }
   }
 }

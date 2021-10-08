@@ -6,6 +6,10 @@ ol {
   padding: 0;
 }
 
+html {
+  min-width: 375px;
+}
+
 * {
   box-sizing: border-box;
 }
